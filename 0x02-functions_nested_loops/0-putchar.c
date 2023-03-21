@@ -2,9 +2,8 @@
 /**
  * main - print _putchar
  * is written by Sara
- * Return: 
+ * Return: 0
  */
-
 int main(void)
 {
 _putchar('_');
