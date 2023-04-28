@@ -3,17 +3,6 @@
 #include "lists.h"
 
 /**
- * _strlen - length of a given string
- * @str: given string
- *
- * Return: return length of a string
- */
-int _strlen(char str[])
-{
-	unsigned int len = 0;
-}
-
-/**
  * add_node - adds a new node at the beginning of a linked list
  * @head: double pointer to the list_t list
  * @str: new string to add in the node
@@ -27,13 +16,17 @@ list_t *add_node(list_t **head, const char *str)
 
 	while (str[len])
 		len++;
+
 	new = malloc(sizeof(list_t));
 	if (!new)
 		return (NULL);
+
 	new->str = strdup(str);
 	new->len = len;
 	new->next = (*head);
 	(*head) = new;
+
 	return (*head);
 }
+
 
