@@ -4,19 +4,13 @@
 
 /**
  * _strlen - length of a given string
- * @str: String
+ * @str: given string
  *
- * Return: the length of the str
+ * Return: return length of a string
  */
-int _strlen(char *str)
+int _strlen(char str[])
 {
-	int length = 0;
-
-	if (!str)
-		return (0);
-	while (*str++)
-		length++;
-	return (length);
+	unsigned int len = 0;
 }
 
 /**
@@ -28,21 +22,18 @@ int _strlen(char *str)
  */
 list_t *add_node(list_t **head, const char *str)
 {
-	list_t *node = malloc(sizeof(list_t));
+	list_t *new;
+	unsigned int len = 0;
 
-	if (!head || !node)
+	while (str[len])
+		len++;
+	new = malloc(sizeof(list_t));
+	if (!new)
 		return (NULL);
-	if (str)
-	{
-		node->str = strdup(str);
-		if (!node->str)
-		{
-			free(node);
-			return (NULL);
-		}
-		node->len = _strlen(node->str);
-	}
-	node->next = *head;
-	*head = node;
+	new->str = strdup(str);
+	new->len = len;
+	new->next = (*head);
+	(*head) = new;
 	return (*head);
 }
+
